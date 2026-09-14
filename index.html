@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>모아 · 구독 관리</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 일반 스크립트를 순서대로 불러오면 서버 없이 파일로 열 수 있습니다. -->
+  <script src="js/logic.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html"><span class="brand-icon">m</span> 모아<span class="brand-caption">구독 관리</span></a><span class="local-label">나만의 구독 노트</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">MY SUBSCRIPTIONS</p><h1>구독 생활, 한눈에.</h1><p>매달 나가는 구독료를 모아, 가볍게 관리하세요.</p></div><a class="button primary" href="#subscription-form">+ 새 구독 추가</a></section>
+    <p id="storage-warning" class="warning" role="alert" hidden></p>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <section class="summary" aria-label="구독 지출 요약">
+      <article class="summary-card featured"><p>월 구독료 합계</p><strong id="monthly-total">0원</strong><small>연간 결제는 월 금액으로 환산해요</small></article>
+      <article class="summary-card"><p>연간 예상 지출</p><strong id="yearly-total">0원</strong><small>월 구독료 합계 × 12개월</small></article>
+      <article class="summary-card"><p>이번 주 결제 예정 <span id="upcoming-count" class="badge">0건</span></p><strong id="upcoming-total">0원</strong><small>오늘부터 7일간 · 실제 결제 금액</small><ul id="upcoming-list" class="upcoming-list"></ul></article>
+    </section>
+    <div class="workspace">
+      <div class="main-column">
+        <section aria-labelledby="list-title"><div class="section-heading"><h2 id="list-title">내 구독 <span id="subscription-count">0</span></h2><span class="muted">결제일 순</span></div><div id="subscription-list" class="subscription-list"></div></section>
+        <section class="panel categories" aria-labelledby="category-title"><div class="section-heading"><h2 id="category-title">어디에 쓰고 있나요?</h2><span class="muted">월 금액 기준</span></div><div id="category-list"></div></section>
+      </div>
+      <aside class="panel form-panel">
+        <p class="eyebrow">KEEP IT TOGETHER</p><h2 id="form-title">새 구독 추가</h2><p class="form-description">기억할 구독, 여기에 모아두세요.</p>
+        <form id="subscription-form">
+          <label for="name">구독 이름</label><input id="name" name="name" placeholder="예: 넷플릭스" required maxlength="60" autocomplete="off">
+          <div class="form-row"><div><label for="amount">결제 금액 (원)</label><input id="amount" name="amount" type="number" min="1" max="1000000000" step="1" placeholder="13,500" required inputmode="numeric"></div><div><label for="cycle">결제 주기</label><select id="cycle" name="cycle"><option value="monthly">매월</option><option value="yearly">매년</option></select></div></div>
+          <label for="nextPaymentDate">다음 결제일</label><input id="nextPaymentDate" name="nextPaymentDate" type="date" min="1900-01-01" max="9999-12-31" required>
+          <label for="category">카테고리</label><select id="category" name="category"><option>영상</option><option>음악</option><option>생산성</option><option>운동</option><option>교육</option><option>생활</option><option>기타</option></select>
+          <label for="paymentMethod">결제 수단 <span class="muted">선택</span></label><input id="paymentMethod" name="paymentMethod" placeholder="예: 삼성카드" maxlength="40" autocomplete="off">
+          <button id="submit-button" class="button primary full-width" type="submit">+ 구독 추가하기</button><button id="cancel-edit" class="button secondary full-width" type="button" hidden>수정 취소</button>
+        </form><p class="storage-note">이 브라우저에 자동 저장됩니다.<br>브라우저 데이터를 삭제하면 기록도 지워져요.</p>
+      </aside>
+    </div>
+    <footer>작은 구독도, 꼼꼼하게. <b>모아</b></footer>
+  </main>
+</body>
+</html>
